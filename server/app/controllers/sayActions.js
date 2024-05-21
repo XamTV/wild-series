@@ -1,5 +1,6 @@
 const sayWelcome = (req, res) => {
-  res.send("Welcome to Wild Series !");
+  console.info(req.query);
+  res.send(`Welcome to Wild series, ${req.query.name}`);
 };
 
 module.exports = { sayWelcome };
