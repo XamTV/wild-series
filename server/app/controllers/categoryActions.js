@@ -1,23 +1,17 @@
-const categories = [
-  {
-    id: 1,
-    name: "Science-Fiction",
-  },
-  {
-    id: 2,
-    name: "Comédie",
-  },
-];
+const tables = require("../../database/tables");
 
 // Declare the actions
 
-const browse = (req, res) => {
-  res.json(categories);
+const browse = async (req, res) => {
+  const categoriesFromDB = await tables.category.readAll();
+
+  res.json(categoriesFromDB);
 };
 
-const read = (req, res) => {
+const read = async (req, res) => {
+  const categoriesFromDB = await tables.category.readAll();
   const parsedId = parseInt(req.params.id, 10);
-  const categorie = categories.find((c) => c.id === parsedId);
+  const categorie = categoriesFromDB.find((c) => c.id === parsedId);
 
   if (categorie != null) {
     res.json(categorie);
