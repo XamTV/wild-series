@@ -23,5 +23,5 @@ create table program (
   country VARCHAR(80) NOT NULL,
   year INT NOT NULL,
   category_id int unsigned not null,
-  foreign key (category_id) references program(id)
+  foreign key (category_id) references category(id)
 );
